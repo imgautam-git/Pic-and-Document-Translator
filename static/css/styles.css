@@ -1,0 +1,140 @@
+body {
+    font-family: 'Helvetica', sans-serif;
+    background-color: #2d2d2d;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Title */
+h1 {
+    color: #4a90e2;
+    text-align: center;
+}
+
+/* Image Upload Section */
+.image-section, .detection-section, .language-section, .result-section {
+    background-color: #3c3c3c;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+#file-input {
+    display: none;
+}
+
+#upload-btn {
+    background-color: #4a90e2;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#upload-btn:hover {
+    background-color: #357abd;
+}
+
+#file-name {
+    margin-top: 10px;
+}
+
+#image-preview {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    display: none;
+}
+
+/* Language Detection Section */
+.detection-section h2 {
+    color: #4a90e2;
+    text-align: center;
+}
+
+#detected-language {
+    font-size: 16px;
+    color: #4a90e2;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Translation Section */
+.language-section label {
+    margin-right: 20px;
+}
+
+#translate-btn {
+    background-color: #4a90e2;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#translate-btn:hover {
+    background-color: #357abd;
+}
+
+/* Translation Results */
+#translated-text {
+    width: 100%;
+    height: 200px;
+    background-color: #3c3c3c;
+    color: #ffffff;
+    border: 1px solid #4a90e2;
+    padding: 10px;
+    border-radius: 5px;
+    resize: none;
+}
+
+/* Progress Bar */
+#progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #3c3c3c;
+    border-radius: 5px;
+    overflow: hidden;
+    display: none;
+}
+
+#progress-bar::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 100%;
+    background-color: #4a90e2;
+    animation: progress 2s infinite;
+}
+
+@keyframes progress {
+    0% { width: 0; }
+    50% { width: 50%; }
+    100% { width: 100%; }
+}
+
+#progress-container {
+    display: none; /* Hidden by default */
+    width: 100%;
+    background: #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 10px;
+    background: #4CAF50;
+    transition: width 0.5s ease-in-out;
+}

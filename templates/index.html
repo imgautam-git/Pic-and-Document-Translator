@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Translator Pro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Translator Pro</h1>
+        <div class="image-section">
+            <input type="file" id="file-input" accept=".png,.jpg,.jpeg,.bmp">
+            <button id="upload-btn">📁 Upload Image</button>
+            <p id="file-name">No image selected</p>
+            <img id="image-preview" src="#" alt="Image Preview">
+            <p id="detected-language">Waiting for input...</p>
+            <div id="loading-spinner" class="hidden"></div>
+        </div>
+        <div class="progress-container">
+            <div id="progress-bar"></div>
+        </div>        
+        <div class="language-section">
+            <label><input type="radio" name="direction" value="ne_to_en" checked> Nepali to English</label>
+            <label><input type="radio" name="direction" value="en_to_ne"> English to Nepali</label>
+        </div>
+        <button id="translate-btn">🚀 Translate Text</button>
+        <div class="result-section">
+            <h2>Translation Results</h2>
+            <textarea id="translated-text" readonly></textarea>
+            <button id="download-btn">📥 Download Translation</button>
+        </div>
+        <div id="progress-bar"></div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
