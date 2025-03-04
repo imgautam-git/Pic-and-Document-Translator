@@ -4,7 +4,7 @@ Jinja2==3.1.5
 MarkupSafe==3.0.2
 Pillow==10.0.0
 opencv-python-headless==4.8.0.74
-numpy==2.0.2
+numpy<2.0
 pytesseract==0.3.10
 scikit-learn==1.5.1
 joblib==1.4.2
@@ -14,3 +14,4 @@ torchvision==0.21.0
 pdfplumber==0.11.5
 python-docx==1.1.2
 gunicorn==23.0.0
+opencv-python --upgrade
