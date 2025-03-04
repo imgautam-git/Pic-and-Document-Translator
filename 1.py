@@ -10,6 +10,9 @@ from transformers import MBartForConditionalGeneration, MBart50TokenizerFast
 import logging
 from pdfminer.high_level import extract_text as pdf_extract_text
 from docx import Document
+import io
+import docx
+import pdfplumber
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
@@ -106,42 +109,54 @@ def upload_image():
 
 
 
+def extract_text_from_pdf(file):
+    with pdfplumber.open(file) as pdf:
+        text = ""
+        for page in pdf.pages:
+            text += page.extract_text() or ""
+    return text
+
+def extract_text_from_docx(file):
+    doc = docx.Document(file)
+    text = ""
+    for paragraph in doc.paragraphs:
+        text += paragraph.text + "\n"
+    return text
+
 @app.route('/translate_document', methods=['POST'])
 def translate_document():
     if 'document' not in request.files:
-        return make_response("No file part", 400)
+        return make_response(jsonify({'error': 'No document part'}), 400)
     file = request.files['document']
-    if file.filename == '':
-        return make_response("No selected file", 400)
-
     target_language = request.form['target_language']
-    translated_text = ""
+    direction = ""
 
-    if file:
-        filename = file.filename
+    if file.filename == '':
+        return make_response(jsonify({'error': 'No selected file'}), 400)
+
+    if file and (file.filename.endswith('.pdf') or file.filename.endswith('.docx') or file.filename.endswith('.txt')):
         try:
-            if filename.endswith('.pdf'):
-                text = pdf_extract_text(file)
-            elif filename.endswith('.docx'):
-                doc = Document(file)
-                text = "\n".join([paragraph.text for paragraph in doc.paragraphs])
-            elif filename.endswith('.txt'):
+            if file.filename.endswith('.pdf'):
+                text = extract_text_from_pdf(io.BytesIO(file.read()))
+            elif file.filename.endswith('.docx'):
+                text = extract_text_from_docx(io.BytesIO(file.read()))
+            else:
                 text = file.read().decode('utf-8')
-            else:
-                return make_response("Unsupported file format", 400)
 
-            detected_language = detect_language(text)
-            if target_language == detected_language:
-                return make_response(text, 200)
+            if target_language == "en":
+              direction = "ne_to_en"
             else:
-                translated_text = translate_text(text, f"{detected_language}_to_{target_language}")
-                return make_response(translated_text, 200)
+              direction = "en_to_ne"
+
+            translated_text = translate_text(text, direction)
+            return make_response(translated_text, 200)
 
         except Exception as e:
-            logging.error(f"Error translating document: {e}")
-            return make_response("Error translating document", 500)
-
-    return make_response("File upload failed", 400)
+            logging.error(f"Document translation failed: {e}")
+            return make_response(jsonify({'error': 'Document translation failed'}), 500)
+    else:
+        return make_response(jsonify({'error': 'Invalid file type'}), 400)
+    
 
 @app.route('/translate', methods=['POST'])
 def translate():

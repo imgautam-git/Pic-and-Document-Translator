@@ -18,11 +18,17 @@ h1 {
 }
 
 /* Image Upload Section */
-.image-section, .detection-section, .language-section, .result-section {
+.image-section, .language-section, .result-section, .document-section {
     background-color: #3c3c3c;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
+}
+
+.image-section h2, .document-section h2 {
+    color: #4a90e2;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 #file-input {
@@ -54,12 +60,7 @@ h1 {
 }
 
 /* Language Detection Section */
-.detection-section h2 {
-    color: #4a90e2;
-    text-align: center;
-}
-
-#detected-language {
+#detected-language, #detected-document-language {
     font-size: 16px;
     color: #4a90e2;
     text-align: center;
@@ -124,7 +125,7 @@ h1 {
 }
 
 #progress-container {
-    display: none; /* Hidden by default */
+    display: none;
     width: 100%;
     background: #ddd;
     border-radius: 5px;
@@ -137,4 +138,59 @@ h1 {
     height: 10px;
     background: #4CAF50;
     transition: width 0.5s ease-in-out;
+}
+
+/* Document Section Styles */
+.document-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.document-section input[type="file"],
+.document-section select,
+.document-section button {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #4a90e2;
+    background-color: #444;
+    color: white;
+}
+
+.document-section button {
+    background-color: #4a90e2;
+    border: none;
+    cursor: pointer;
+}
+
+.document-section button:hover {
+    background-color: #357abd;
+}
+
+.document-section p {
+    margin-top: 10px;
+}
+
+#document-preview, #translated-document-preview {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #4a90e2;
+    border-radius: 5px;
+    background-color: #444;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+#download-document-btn {
+    background-color: #4a90e2;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#download-document-btn:hover {
+    background-color: #357abd;
 }
