@@ -49,6 +49,7 @@ optree==0.14.0
 packaging==24.2
 pandas==2.2.3
 pdfminer.six==20231228
+pdfplumber==0.11.5
 Pillow==10.0.0
 portalocker==3.1.1
 protobuf==3.20.3
