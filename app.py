@@ -26,8 +26,8 @@ try:
     language_model = joblib.load(model_path)
     vectorizer = joblib.load(vectorizer_path)
     model_name = "khadak-2002/results"
-    tokenizer = MBart50TokenizerFast.from_pretrained(model_name, local_files_only=True)
-    model = MBartForConditionalGeneration.from_pretrained(model_name, local_files_only=True)
+    tokenizer = MBart50TokenizerFast.from_pretrained(model_name)
+    model = MBartForConditionalGeneration.from_pretrained(model_name)
     logging.info("Models loaded successfully.")
 except Exception as e:
     logging.error(f"Error loading models: {e}")
