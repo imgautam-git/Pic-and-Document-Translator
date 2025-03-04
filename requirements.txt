@@ -12,7 +12,6 @@ Cython==3.0.12
 decorator==5.2.0
 dm-tree==0.1.9
 easygui==0.98.3
-easyocr==1.7.2
 fairseq==0.9.0
 filelock==3.17.0
 Flask==2.3.2
@@ -25,7 +24,6 @@ gunicorn==23.0.0
 h5py==3.13.0
 huggingface-hub==0.28.1
 idna==3.10
-imageio==2.37.0
 itsdangerous==2.2.0
 Jinja2==3.1.5
 joblib==1.4.2
@@ -53,7 +51,6 @@ optree==0.14.0
 packaging==24.2
 pandas==2.2.3
 pdfminer.six==20231228
-pdfplumber==0.11.5
 Pillow==10.0.0
 portalocker==3.1.1
 protobuf==3.20.3
@@ -72,7 +69,6 @@ requests==2.32.3
 rich==13.9.4
 sacrebleu==1.4.14
 safetensors==0.5.2
-scikit-image==0.25.1
 scikit-learn==1.5.1
 scipy==1.15.1
 sentencepiece==0.2.0
