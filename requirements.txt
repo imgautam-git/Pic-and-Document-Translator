@@ -42,8 +42,6 @@ networkx==3.4.2
 ninja==1.11.1.3
 nltk==3.9.1
 numpy==2.0.2
-onnx==1.17.0
-onnx-tf @ git+https://github.com/onnx/onnx-tensorflow.git@ee0c5e537b3cebbddc5773871e6786e6468c7f3f
 opencv-python==4.11.0.86
 opencv-python-headless==4.8.0.74
 opt_einsum==3.4.0
@@ -78,13 +76,7 @@ SpeechRecognition==3.14.1
 sympy==1.13.1
 tensorboard==2.18.0
 tensorboard-data-server==0.7.2
-tensorflow==2.18.0
-tensorflow-addons==0.23.0
-tensorflow-io-gcs-filesystem==0.37.1
-tensorflow-probability==0.25.0
 termcolor==2.5.0
-tf2onnx==1.16.1
-tf_keras==2.18.0
 threadpoolctl==3.5.0
 tifffile==2025.1.10
 tiktoken==0.8.0
