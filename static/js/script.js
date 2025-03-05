@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const blob = new Blob([text], { type: 'text/plain' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = 'translated_document.txt';
+        a.download = 'translated_document_text.txt';
         a.click();
     });
 });

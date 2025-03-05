@@ -198,11 +198,10 @@ def detect_document_language():
     app.run(host='0.0.0.0', port=5000)'''
 
 
-import os
-
 if __name__ == '__main__':
     os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-    port = int(os.environ.get("PORT", 5000))  # Use Render's PORT env variable
+    port = int(os.environ.get("PORT", 10000))  # Use Render's PORT
     app.run(host='0.0.0.0', port=port)
+
 
     
